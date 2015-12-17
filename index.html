@@ -10,7 +10,7 @@ mixpanel.init("15f516924f208c36e641e34db9eb2245");</script><!-- end Mixpanel -->
 <body>
 
 
-<h1> hi </h1>
+<h1 id="MyLink"> hi </h1>
 
 <div id="nav">
     <a href="/">Home</a>
@@ -21,6 +21,22 @@ mixpanel.init("15f516924f208c36e641e34db9eb2245");</script><!-- end Mixpanel -->
     mixpanel.track_links("#nav a", "click nav link", {
         "referrer": document.referrer
     });
+</script>
+
+
+<script type="text/javascript">
+    $("#MyLink").click(function(event) {
+        var cb = generate_callback($(this));
+        event.preventDefault();
+        mixpanel.track("Clicked Link", { "Domain": "nytimes.com" }, cb);
+        setTimeout(cb, 500);
+    })
+        
+    function generate_callback(a) {
+        return function() {
+            window.location = a.attr("href");
+        }
+    }
 </script>
 
 <a href="http://www.yelp.com/biz/haukohi-shave-ice-kihei">Haukohi Shaved Ice</a>
