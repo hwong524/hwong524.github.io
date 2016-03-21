@@ -26,21 +26,6 @@ mixpanel.init("15f516924f208c36e641e34db9eb2245");</script><!-- end Mixpanel -->
 </script>
 
 
-<script type="text/javascript">
-    $("#MyLink").click(function(event) {
-        var cb = generate_callback($(this));
-        event.preventDefault();
-        mixpanel.track("Clicked Link", { "Domain": "nytimes.com" }, cb);
-        setTimeout(cb, 500);
-    })
-        
-    function generate_callback(a) {
-        return function() {
-            window.location = a.attr("href");
-        }
-    }
-</script>
-
 
 <script>mixpanel.track("Page View", {"Page Name":"Created Page"}); </script>
 
